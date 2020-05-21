@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">	
+
+<suite name="Regression Suite">
+        <parameter name= "brovesr" value ="chrom" /> 
+  <test name="Regeression Test " preserve-order ="false">
+	 <classes>
+
+         <class name="facebooktests.TestFileReaderExcel"/>
+
+
+	 </classes>
+   </test>
+   
+ </suite>
