@@ -1,13 +1,8 @@
 package Pages;
 
 
-import java.util.concurrent.TimeUnit;
 import Actions.UiActions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 
 public class sendmessgepage {
@@ -26,7 +21,7 @@ public class sendmessgepage {
 
 
  action.waitfunction(40);
-        action.findelemnt(messagebutton).actiononelement("opennewtab");
+        action.findelement(messagebutton).actiononelement("opennewtab");
 
 	    }
     
@@ -35,7 +30,7 @@ public class sendmessgepage {
         action.waitfunction(40);
         for (int i = 0; i <100 ; i++) {
 
-           action.findelemnt(sendmessagecontent).sendkeytoelement(messageContent)
+           action.findelement(sendmessagecontent).sendkeytoelement(messageContent)
            .actiononelement("enter");
 
         }

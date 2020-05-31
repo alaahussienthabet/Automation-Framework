@@ -2,7 +2,7 @@ package Modul.Screenshot;
 
 import Actions.UiActions;
 import com.applitools.eyes.selenium.Eyes;
-import filesreaders.Propertyfilereader;
+import filesreaders.PropertyFileReader;
 
 
 public class ScreenShots {
@@ -14,7 +14,7 @@ public class ScreenShots {
     public void intialeyes() {
         eyes=new Eyes();
 
-        String[] filedata=(Propertyfilereader.properitesfilereader(new String[]{"applitoolAPIkey"}));
+        String[] filedata=(PropertyFileReader.propertiesfilereader(new String[]{"applitoolAPIkey"}));
         eyes.setApiKey(filedata[2]);
     }
     public  void windowscreenshot() {

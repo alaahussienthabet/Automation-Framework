@@ -19,9 +19,9 @@ public class UiActions {
 
 
 //wait until function
-public void waitfunction(By path ,String typ){
+public void waitFunction(By path , String typ){
        switch (typ){
-           case "waitvisavlity" :
+           case "waitvisibility" :
 
                wait.until(ExpectedConditions.visibilityOfElementLocated(path));
            break;
@@ -30,24 +30,25 @@ public void waitfunction(By path ,String typ){
                break;
        }
    }
-
-    public void waitfunction(int time){
+    // wait by specific time
+    public void waitFunction(int time){
 
        driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
     }
-
-    public UiActions findelemnt( By path){
+    // to find element and return it
+    public UiActions findElement(By path){
         element = driver.findElement(path);
        return this;
 
     }
-    public UiActions sendkeytoelement (String text){
+    // to write in fields
+    public UiActions sendKeyToElement(String text){
        element.sendKeys(text);
        return this;
 
     }
-
-    public void actiononelement(String action){
+    // to make actions on element
+    public void actionOnElement(String action){
       switch (action)
 {
     case "submit" :

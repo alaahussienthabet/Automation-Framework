@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Excelfilereader {
+public class ExcelFileReader {
 	public static String [][] excelleader() {
 		String[][] data = null;
 		XSSFRow row;

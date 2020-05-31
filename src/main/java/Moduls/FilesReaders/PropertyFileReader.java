@@ -5,14 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class Propertyfilereader {
-	public static String[] properitesfilereader(String [] data)
+public class PropertyFileReader {
+	public static String[] propertiesfilereader(String [] data)
 	{
-		String datafile[] =new String[data.length];
-				Properties property = new Properties();
+		Properties property = new Properties();
+		String [] datafile =new String[data.length];
+
 				
 						 try {
-								InputStream input = new FileInputStream("configration.properties");
+								InputStream input = new FileInputStream("configurations.properties");
 							
 									property.load(input);
 						 }
