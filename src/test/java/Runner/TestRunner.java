@@ -1,6 +1,6 @@
 package Runner;
 
-import facebooktests.BaseClass;
+import FacebookTests.BaseClass;
 import io.cucumber.testng.CucumberOptions;
 
 

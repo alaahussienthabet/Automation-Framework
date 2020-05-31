@@ -15,13 +15,13 @@ public class GetTest extends AssertionsClass {
     JsonPath path;
 
     @Test
-    public void restassuredget() {
+    public void RestAssuredGetRequest() {
         HashMap<String, String> data =
                 new HashMap<String, String>();
         data.put("page", "2");
         data.put("per_page", "5");
         action = new APIActions("https://reqres.in/");
-        action.RequestWithParameters(data);
+        action.requestWithParameters(data);
         Response response = action.response("api/users", Method.GET);
         response.then().log().all();
         checkResponseHttpStatusCode(response, 200);
@@ -31,7 +31,7 @@ public class GetTest extends AssertionsClass {
 
 
     @Test
-    public void restassuredget_extract() {
+    public void RestAssuredGetRequest_Extract() {
 
 
         HashMap<String, String> data =
@@ -39,14 +39,14 @@ public class GetTest extends AssertionsClass {
         data.put("page", "2");
         data.put("per_page", "5");
         action = new APIActions("https://reqres.in/");
-        action.RequestWithParameters(data);
+        action.requestWithParameters(data);
         Response response = action.response("api/users", Method.GET);
         response.then().
                 extract().response();
         path = response.jsonPath();
 
-        checkjsonpath(path, "data[0].id", "1");
-        checkjsonpath(path, "data[0].first_name", "George");
+        checkJsonPath(path, "data[0].id", "1");
+        checkJsonPath(path, "data[0].first_name", "George");
 
         checkResponseHttpStatusCode(response, 200);
 

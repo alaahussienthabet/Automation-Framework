@@ -1,4 +1,4 @@
-package filesreaders;
+package Moduls.FilesReaders;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,10 +6,12 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyFileReader {
-	public static String[] propertiesfilereader(String [] data)
+
+	public static String[] propertiesFileReader(String [] data)
 	{
-		Properties property = new Properties();
+
 		String [] datafile =new String[data.length];
+		Properties property = new Properties();
 
 				
 						 try {

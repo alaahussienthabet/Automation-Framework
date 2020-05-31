@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">	
 
 <suite name="Regression Suite">
-        <parameter name= "brovesr" value ="chrom" /> 
+        <parameter name= "Browser" value ="chrome" />
   <test name="Regeression Test " preserve-order ="false">
 	 <classes>
 
-         <class name="facebooktests.TestFileReaderExcel"/>
+         <class name="FacebookTests.TestFileReaderExcel"/>
 
 
 	 </classes>

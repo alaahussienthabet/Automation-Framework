@@ -1,4 +1,4 @@
-package Actions;
+package UI;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

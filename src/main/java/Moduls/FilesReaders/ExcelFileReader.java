@@ -1,4 +1,4 @@
-package filesreaders;
+package Moduls.FilesReaders;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelFileReader {
-	public static String [][] excelleader() {
+	public static String [][] excelReader() {
 		String[][] data = null;
 		XSSFRow row;
 	    XSSFCell cell;

@@ -1,8 +1,8 @@
-package Modul.Screenshot;
+package Moduls.ScreenShotModul;
 
-import Actions.UiActions;
+import UI.UiActions;
 import com.applitools.eyes.selenium.Eyes;
-import filesreaders.PropertyFileReader;
+import Moduls.FilesReaders.PropertyFileReader;
 
 
 public class ScreenShots {
@@ -11,13 +11,13 @@ public class ScreenShots {
 
 
 
-    public void intialeyes() {
+    public void initialEyes() {
         eyes=new Eyes();
 
-        String[] filedata=(PropertyFileReader.propertiesfilereader(new String[]{"applitoolAPIkey"}));
+        String[] filedata=(PropertyFileReader.propertiesFileReader(new String[]{"applitoolAPIkey"}));
         eyes.setApiKey(filedata[2]);
     }
-    public  void windowscreenshot() {
+    public  void WindowScreenShot() {
         eyes.open(UiActions.driver, "Facebook",
                 Thread.currentThread().getStackTrace()[2].getMethodName());
         eyes.checkWindow();

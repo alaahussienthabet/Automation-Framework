@@ -1,11 +1,11 @@
-package facebooktests;
+package FacebookTests;
 
 
 
-import Pages.homepages;
-import Pages.loginpages;
-import Pages.sendmessgepage;
-import filesreaders.Propertyfilereader;
+import Pages.HomePages;
+import Pages.LoginPages;
+import Pages.SendMessagePage;
+import Moduls.FilesReaders.PropertyFileReader;
 
 
 import org.testng.annotations.Test;
@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 public class TestFileReaderProperties extends BaseClass{
 
 
-    loginpages log = new loginpages();
-    homepages home = new homepages();
-    sendmessgepage send = new sendmessgepage();
+    LoginPages log = new LoginPages();
+    HomePages home = new HomePages();
+    SendMessagePage send = new SendMessagePage();
     String username;
     String password;
 
@@ -25,22 +25,23 @@ public class TestFileReaderProperties extends BaseClass{
 
     // data reader from properties file
     @Test
-    public void OpenFacebookAndLoginbyfileproperty() {
+    public void openFacebookAndLoginByFileProperty() {
 
-        String[] filedata = Propertyfilereader.properitesfilereader(new String[]{username, password});
+        String[] filedata = PropertyFileReader.propertiesFileReader(new String[]{username, password});
         log.login(filedata[0], filedata[1]);
 
 
     }
 
 
+
     @Test
-    public void SearchForUser() {
+    public void searchForUser() {
 
 
-        home.NavigateToVictimProfile("Friend_name");
-        send.PressOnMessageButton();
-        send.SendMultipleMessages("your_massage");
+        home.navigateToVictimProfile("Friend_name");
+        send.pressOnMessageButton();
+        send.sendMultipleMessages("your_massage");
 
     }
 

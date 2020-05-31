@@ -1,13 +1,11 @@
 package Pages;
 
-import Actions.UiActions;
+import UI.UiActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 
-import org.openqa.selenium.WebElement;
 
-
-public class homepages {
+public class HomePages {
 	
 
 	UiActions action = new UiActions();
@@ -20,18 +18,19 @@ public class homepages {
 
   
 
-  public void NavigateToVictimProfile(String usernametext){
+  public void navigateToVictimProfile(String usernametext){
+      // find friend name
       By victim = By.xpath(String.format(userpath,usernametext));
 
       try {
 
+        // write friend name and find friend's account
+          action.waitFunction(searchbar,"waitvisibility");
+           action.findElement(searchbar).sendKeyToElement(usernametext)
+          .actionOnElement("submit");
 
-          action.waitfunction(searchbar,"waitvisavlity");
-           action.findelemnt(searchbar).sendkeytoelement(usernametext)
-          .actiononelement("submit");
-
-          action.waitfunction(victim,"waitvisavlity");
-          action.findelemnt(victim).actiononelement("click");
+          action.waitFunction(victim,"waitvisibility");
+          action.findElement(victim).actionOnElement("click");
 
 
       }

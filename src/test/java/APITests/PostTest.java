@@ -28,7 +28,7 @@ public class PostTest extends AssertionsClass {
     }
 
     @Test(dataProvider = "testData1")
-    public void restassuredpost( String name, String job) {
+    public void RestAssuredPostRequest(String name, String job) {
         JSONObject object = new JSONObject();
 
         object.put("name", name);
@@ -39,7 +39,7 @@ public class PostTest extends AssertionsClass {
         data.put("id","2");
 
         action= new APIActions("https://reqres.in/") ;
-        action.RequestWithQuaryParametersendBody(data,object,ContentType.JSON);
+        action.requestWithQueryParameterAndSendBody(data,object,ContentType.JSON);
         Response response = action.response("api/users", Method.POST);
 
         response.then().log().body();
@@ -51,7 +51,7 @@ public class PostTest extends AssertionsClass {
     }
 
     @Test(dataProvider = "testData1")
-    public void restassuredpost_extract( String name, String job) {
+    public void RestAssuredPostRequest_Extract(String name, String job) {
         JSONObject object = new JSONObject();
 
         object.put("name", name);
@@ -62,7 +62,7 @@ public class PostTest extends AssertionsClass {
         data.put("id","2");
 
         action= new APIActions("https://reqres.in/") ;
-        action.RequestWithQuaryParametersendBody(data,object, ContentType.JSON);
+        action.requestWithQueryParameterAndSendBody(data,object, ContentType.JSON);
         Response response = action.response("api/users", Method.GET);
 
         response.then().
