@@ -1,7 +1,7 @@
 package FacebookTests;
 
-import UI.UiActions;
 import Moduls.ScreenShotModul.ScreenShotFromSelenium;
+import UI.UiActions;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,7 +36,7 @@ public class BaseClass extends AbstractTestNGCucumberTests {
                 UiActions.driver = new FirefoxDriver();
                 break;
             case "internet explorer": //run tests by internet explore
-                //WebDriverManager.i.setup();
+                System.setProperty("webdriver.ie.driver", "src\\test\\resources\\IEDriverServer.exe");
                 UiActions.driver = new InternetExplorerDriver();
                 break;
         }
