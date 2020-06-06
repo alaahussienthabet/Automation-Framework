@@ -16,6 +16,7 @@ public class UiActions {
     public static WebDriver driver;
     public static WebDriverWait wait;
     private  WebElement element;
+    
 
 
 //wait until function

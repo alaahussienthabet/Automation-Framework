@@ -13,8 +13,8 @@ public class HomePages {
     String userpath = "//div[@class='_6rbb']//a[contains(.,'%s')]";
 
 	
-	 By searchbar = By.xpath("//input[@type='search']");
-
+	 By searchbar = By.xpath("//input[@type='text' and @name='q']");
+////input[@type='search']
 
   
 

@@ -43,7 +43,7 @@ public class PostTest extends AssertionsClass {
         Response response = action.response("api/users", Method.POST);
 
         response.then().log().body();
-        checkResponseHttpStatusCode(response,200);
+        checkResponseHttpStatusCode(response,201);
 
 
 

@@ -10,6 +10,7 @@ import Moduls.FilesReaders.ExcelFileReader;
 import io.qameta.allure.Link;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,13 +26,19 @@ public class TestFileReaderExcel extends BaseClass {
 
 
 
-
-    @DataProvider(name = "reader")
-    public Object[][] getDataFromDataProvider() {
-        return ExcelFileReader.excelReader();
+    // data provider to reade credentials from excel file
+    @DataProvider(name = "credentials")
+    public Object[][] getCredentialsFromExcel() {
+        return ExcelFileReader.excelReader("credentials.xlsx");
     }
 
-    @Test(dataProvider = "getDataFromDataProvider")
+    // data provider to reade test data from excel file
+    @DataProvider(name = "testData")
+    public Object[][] getDataFromExcel() {
+        return ExcelFileReader.excelReader("testdata.xlsx");
+    }
+
+    @Test(dataProvider ="credentials")
 
     @Severity(SeverityLevel.CRITICAL)
 
@@ -44,15 +51,16 @@ public class TestFileReaderExcel extends BaseClass {
 
     }
 
-    @Test
+    @Test(dataProvider = "testData")
     @Severity(SeverityLevel.TRIVIAL)
-    public void searchForUser() {
+    public void searchForUser( String friendName,String massage) {
 
         //write your friend name
-        home.navigateToVictimProfile("Friend_name");
+
+        home.navigateToVictimProfile(friendName);//Friend_name
         send.pressOnMessageButton();
         //write your massage
-        send.sendMultipleMessages("your_massage");
+        send.sendMultipleMessages(massage);//your_massage
         //taking screenshot using applitool
         screenShots.initialEyes();
         screenShots.WindowScreenShot();

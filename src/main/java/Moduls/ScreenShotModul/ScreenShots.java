@@ -15,7 +15,7 @@ public class ScreenShots {
         eyes=new Eyes();
 
         String[] filedata=(PropertyFileReader.propertiesFileReader(new String[]{"applitoolAPIkey"}));
-        eyes.setApiKey(filedata[2]);
+        eyes.setApiKey(filedata[1]);
     }
     public  void WindowScreenShot() {
         eyes.open(UiActions.driver, "Facebook",

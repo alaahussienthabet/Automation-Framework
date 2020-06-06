@@ -8,7 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelFileReader {
-	public static String [][] excelReader() {
+	public static String [][] excelReader(String filename) {
 		String[][] data = null;
 		XSSFRow row;
 	    XSSFCell cell;
@@ -18,7 +18,7 @@ public class ExcelFileReader {
 	   
 		
 		 try {
-				FileInputStream xlfile = new FileInputStream("datareader.xlsx");
+				FileInputStream xlfile = new FileInputStream(filename);
 				XSSFWorkbook exlreader = new XSSFWorkbook(xlfile);
 				for(int i = 0 ; i <	exlreader.getNumberOfSheets() ;i++ ) {
 					

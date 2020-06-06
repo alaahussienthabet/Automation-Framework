@@ -17,8 +17,7 @@ public class TestFileReaderProperties extends BaseClass{
     LoginPages log = new LoginPages();
     HomePages home = new HomePages();
     SendMessagePage send = new SendMessagePage();
-    String username;
-    String password;
+
 
 
 
@@ -27,7 +26,7 @@ public class TestFileReaderProperties extends BaseClass{
     @Test
     public void openFacebookAndLoginByFileProperty() {
 
-        String[] filedata = PropertyFileReader.propertiesFileReader(new String[]{username, password});
+        String[] filedata = PropertyFileReader.propertiesFileReader(new String[]{"username", "password"});
         log.login(filedata[0], filedata[1]);
 
 
