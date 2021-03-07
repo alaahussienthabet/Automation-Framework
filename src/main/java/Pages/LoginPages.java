@@ -5,7 +5,9 @@ import UI.UiActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 
-
+/**
+ * login in facebook with username and password
+ */
 public class LoginPages {
 
     UiActions action = new UiActions();
@@ -15,7 +17,13 @@ public class LoginPages {
     By loginbutton = By.xpath("//input[ @data-testid=\"royal_login_button\"]");
 
 
-    // login with username and password
+
+
+    /**
+     * login with username and password
+     * @param username
+     * @param password
+     */
     public void login(String username, String password) {
 
         try {
@@ -23,7 +31,7 @@ public class LoginPages {
 
             action.findElement(userfield).sendKeyToElement(username).findElement(passwordfield)
                     .sendKeyToElement(password).findElement(loginbutton).actionOnElement("click");
-        } catch (ElementNotInteractableException e) {
+        } catch (ElementNotInteractableException e) {//nehal
             System.out.println("Unable to locate elements");
         }
     }

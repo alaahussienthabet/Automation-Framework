@@ -16,13 +16,19 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 
-
+/**
+ * base class that have all baseic info and actions across all tests
+ */
 public class BaseClass extends AbstractTestNGCucumberTests {
 
 
     @BeforeClass
     @Parameters({"Browser"}) // To run test from suite
-    public void beforeClass(@Optional("chrome") String Browser) { // @optional to run tests by default value = (chrome)
+    /**
+     * function that switch to possible browsers that can use in tests and navigate to URL
+     * @optional to run tests by default value = (chrome)
+     */
+    public void beforeClass(@Optional("chrome") String Browser) {
 
 
         switch (Browser) {
@@ -32,6 +38,7 @@ public class BaseClass extends AbstractTestNGCucumberTests {
                 options.addArguments("--disable-notifications");
                 WebDriverManager.chromedriver().setup();
                 UiActions.driver = new ChromeDriver(options);
+
                 break;
             case "firefox": //run tests by firefox
                 WebDriverManager.firefoxdriver().setup();
@@ -50,13 +57,16 @@ public class BaseClass extends AbstractTestNGCucumberTests {
 
         UiActions.driver.manage().window().maximize();
         //navigate to specific URL
-        String[] filedata=(PropertyFileReader.propertiesFileReader(new String[]{"URL"}));
+        String[] filedata = (PropertyFileReader.propertiesFileReader(new String[]{"URL"}));
         UiActions.driver.navigate().to(filedata[0]);
 
         UiActions.wait = new WebDriverWait(UiActions.driver, 100);
     }
 
     @AfterMethod
+/**
+ * screenShots in failure case only
+ */
     public void takeScreenShots(ITestResult result) throws IOException {
 
         if (ITestResult.FAILURE == result.getStatus()) {
@@ -69,8 +79,11 @@ public class BaseClass extends AbstractTestNGCucumberTests {
 
     }
 
-    @AfterClass(enabled = true)
 
+    @AfterClass(enabled = true)
+/**
+ * to close the browser after test
+ */
     public void afterClass() {
 
         UiActions.driver.close();

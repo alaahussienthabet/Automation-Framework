@@ -15,7 +15,7 @@ public class PropertyFileReader {
 
 				
 						 try {
-								InputStream input = new FileInputStream("configurations.properties");
+								InputStream input = new FileInputStream("src//test//resources//DataDriven//configurations.properties");
 							
 									property.load(input);
 						 }

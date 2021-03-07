@@ -1,9 +1,7 @@
 package UI;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import Moduls.Utilities.HandleExceptions;
+import org.openqa.selenium.*;
 
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -15,62 +13,133 @@ import java.util.concurrent.TimeUnit;
 public class UiActions {
     public static WebDriver driver;
     public static WebDriverWait wait;
-    private  WebElement element;
-    
+    private WebElement element;
 
 
-//wait until function
-public void waitFunction(By path , String typ){
-       switch (typ){
-           case "waitvisibility" :
+    /**
+     * wait for element
+     *
+     * @param path
+     * @param typOfWait
+     */
+    public void waitFunction(By path, String typOfWait) {
+        try {
+            switch (typOfWait) {
+                case "waitVisibility":
 
-               wait.until(ExpectedConditions.visibilityOfElementLocated(path));
-           break;
-           case "waitclick":
-               wait.until(ExpectedConditions.elementToBeClickable(path));
-               break;
-       }
-   }
-    // wait by specific time
-    public void waitFunction(int time){
-
-       driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+                    wait.until(ExpectedConditions.visibilityOfElementLocated(path));
+                    break;
+                case "waitClick":
+                    wait.until(ExpectedConditions.elementToBeClickable(path));
+                    break;
+            }
+        } catch (ElementNotVisibleException e) {
+            HandleExceptions.ElementNotVisibleExceptionHandling(e);
+        } catch (ElementNotInteractableException e) {
+            HandleExceptions.ElementNotInteractableExceptionHandling(e);
+        } catch (TimeoutException e) {
+            HandleExceptions.TimeoutExceptionHandling(e);
+        }
     }
-    // to find element and return it
-    public UiActions findElement(By path){
-        element = driver.findElement(path);
-       return this;
+
+    /**
+     * wait to specific time
+     *
+     * @param time
+     */
+
+    public void waitFunction(int time) {
+        try {
+
+
+            driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+        } catch (TimeoutException e) {
+            HandleExceptions.TimeoutExceptionHandling(e);
+        }
+    }
+
+    /**
+     * to find element and return it
+     *
+     * @param path
+     * @return
+     */
+    public UiActions findElement(By path) {
+
+        try {
+
+            element = driver.findElement(path);
+        } catch (InvalidSelectorException e) {
+            HandleExceptions.InvalidSelectorExceptionHandling(e);
+        } catch (NoSuchElementException e) {
+            HandleExceptions.NoSuchElementExceptionHandling(e);
+        } catch (NullPointerException e) {
+            HandleExceptions.NullPointerExceptionHandling(e);
+        } catch (ElementNotVisibleException e) {
+            HandleExceptions.ElementNotVisibleExceptionHandling(e);
+        }
+        return this;
 
     }
-    // to write in fields
-    public UiActions sendKeyToElement(String text){
-       element.sendKeys(text);
-       return this;
+
+    /**
+     * to send value in specific element
+     *
+     * @param text
+     * @return
+     */
+    public UiActions sendKeyToElement(String text) {
+        try {
+            element.sendKeys(text);
+        } catch (NullPointerException e) {
+            HandleExceptions.NullPointerExceptionHandling(e);
+        } catch (NoSuchElementException e) {
+            HandleExceptions.NoSuchElementExceptionHandling(e);
+        }
+        return this;
 
     }
-    // to make actions on element
-    public void actionOnElement(String action){
-      switch (action)
-{
-    case "submit" :
-        element.submit();
-        break;
-    case "click" :
-        element.click();
-        break;
-    case "opennewtab":
-        Actions builder = new Actions(driver);
-        Action openLinkInNewTab = builder
-                .sendKeys(element, Keys.CONTROL).clickAndHold().keyUp(element,Keys.CONTROL)
-                .build();
-        openLinkInNewTab.perform();
-        builder.sendKeys(Keys.CONTROL+"\t").click(element).build().perform();
-        break;
-    case "enter" :
-        element.sendKeys(Keys.ENTER);
-    }}
 
+    /**
+     * to make actions on element
+     *
+     * @param action
+     */
 
+    public void actionOnElement(String action) {
+        try {
+            switch (action) {
+                case "submit":
+                    element.submit();
+                    break;
+                case "click":
+                    element.click();
+                    break;
+                case "openNewTab":
+                    Actions builder = new Actions(driver);
+                    Action openLinkInNewTab = builder
+                            .sendKeys(element, Keys.CONTROL).clickAndHold().keyUp(element, Keys.CONTROL)
+                            .build();
+                    openLinkInNewTab.perform();
+                    builder.sendKeys(Keys.CONTROL + "\t").click(element).build().perform();
+                    break;
+                case "enter":
+                    element.sendKeys(Keys.ENTER);
+            }
+        } catch (NullPointerException e) {
+            HandleExceptions.NullPointerExceptionHandling(e);
+        } catch (ElementNotInteractableException e) {
+            HandleExceptions.ElementNotInteractableExceptionHandling(e);
+        }
+    }
+
+    /**
+     * Handle scroll Down action on the browser
+     */
+    public void scrollDownToBottom() {
+        JavascriptExecutor scroll = (JavascriptExecutor) driver;
+        scroll.executeScript("window.scrollTo(0,700);");
+    }
 
 
 }

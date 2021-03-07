@@ -10,8 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * take screenShots if needed whatever the step in test
+ */
 public class ScreenShotFromSelenium {
 
+    /**
+     * take screenShot with png format
+     * @param screenshotName
+     * @throws IOException
+     */
     public static void takeScreenShots(String screenshotName) throws IOException {
         Path path = Paths.get(".//ScreenShot//", screenshotName + ".png");
         try {
